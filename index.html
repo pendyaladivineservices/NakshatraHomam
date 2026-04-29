@@ -6,6 +6,10 @@
 <title>PENDYALA DIVINE SERVICES</title>
 
 <style>
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     font-family:Arial, sans-serif;
@@ -63,6 +67,25 @@ header{
     letter-spacing:1px;
 }
 
+/* Menu */
+.menu{
+    background:white;
+    padding:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.menu a{
+    text-decoration:none;
+    color:#ff6600;
+    font-weight:bold;
+    margin:0 15px;
+    font-size:18px;
+}
+
+.menu a:hover{
+    color:#cc0000;
+}
+
 /* Banner */
 .header-img{
     width:100%;
@@ -113,6 +136,15 @@ header{
     border-radius:10px;
     border:1px solid #eee;
 }
+
+.section{
+    background:white;
+    margin:20px auto;
+    padding:25px;
+    border-radius:12px;
+    max-width:700px;
+    box-shadow:0 0 10px rgba(0,0,0,0.10);
+}
 </style>
 </head>
 
@@ -126,21 +158,29 @@ header{
 
 <div class="title-box">
     <p class="title-main">PENDYALA</p>
-    <p class="title-sub"> DIVINE SERVICES </p>
+    <p class="title-sub">DIVINE SERVICES</p>
 </div>
 
 </div>
 
 </header>
 
+<!-- MENU -->
+<div class="menu">
+    <a href="#pujas">Pujas</a>
+    <a href="#astrology">Astrology</a>
+    <a href="#muhurthas">Muhurthas</a>
+</div>
+
 <!-- Temple Banner -->
 <img src="Homam.jpeg" class="header-img" alt="Temple">
 
 <div class="container">
 
+<!-- PUJAS -->
+<div id="pujas">
 <h2>Available Poojas</h2>
 
-<!-- Single Pooja -->
 <div class="pooja">
 
 <h3>Maha Nakshatra Homam Special Pooja (Single)</h3>
@@ -165,35 +205,27 @@ header{
 </a>
 
 </div>
-
-<!-- Family Pooja -->
-<!--
-<div class="pooja">
-
-<h3>Maha Nakshatra Homam Special Pooja (Family)</h3>
-
-<p style="line-height:1.7;">
-🙏 Sankalpam for Family (Gothram & Names) followed by sacred Homam rituals.
-Offerings include Vastram, Kumkum, Ghee, Fruits, Flower Mala and Dakshina.
-</p>
-
-<p><b>Location:</b> Draksharamam</p>
-
-<div class="price">₹2116</div>
-
-<div class="payment">
-<h3>📲 Payment Details</h3>
-<p>Scan QR code to pay</p>
-<img src="upi-qr-1.jpeg" width="220">
-<p><b>Please complete payment before filling form</b></p>
 </div>
 
-<a href="https://tally.so/r/MeLxg8" target="_blank">
-<button class="btn">Enter Details (Family)</button>
-</a>
-
+<!-- ASTROLOGY -->
+<div id="astrology" class="section">
+<h2>Astrology Services</h2>
+<p>🔯 Horoscope Reading</p>
+<p>🔯 Marriage Matching</p>
+<p>🔯 Career Guidance</p>
+<p>🔯 Dosha Analysis</p>
+<p>🔯 Personal Consultation</p>
 </div>
--->
+
+<!-- MUHURTHAS -->
+<div id="muhurthas" class="section">
+<h2>Shubha Muhurthas</h2>
+<p>📅 Marriage Muhurthas</p>
+<p>📅 Gruha Pravesham</p>
+<p>📅 Naming Ceremony</p>
+<p>📅 Business Opening</p>
+<p>📅 Vehicle Purchase</p>
+</div>
 
 </div>
 
