@@ -17,17 +17,44 @@ body{
 header{
     background:#ff6600;
     color:white;
-    padding:15px;
+    padding:12px;
+}
+
+/* Header Flex */
+.header-content{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
 /* Logo */
 .logo{
-    width:90px;
-    height:90px;
+    width:130px;
+    height:130px;
     border-radius:50%;
     background:white;
-    padding:5px;
-    margin-bottom:10px;
+    padding:6px;
+}
+
+/* Title Text */
+.title-box{
+    text-align:left;
+}
+
+.title-main{
+    font-size:42px;
+    font-weight:bold;
+    line-height:1;
+    margin:0;
+}
+
+.title-sub{
+    font-size:20px;
+    margin-top:5px;
+    font-weight:normal;
+    letter-spacing:1px;
 }
 
 /* Main Banner */
@@ -87,10 +114,16 @@ header{
 
 <header>
 
-    <!-- LOGO IMAGE -->
-    <img src="icon.jpeg" class="logo" alt="Logo">
+<div class="header-content">
 
-    <h1>🛕 PENDYALA DIVINE SERVICES 🙏</h1>
+<img src="icon.jpeg" class="logo" alt="Logo">
+
+<div class="title-box">
+    <p class="title-main">PENDYALA</p>
+    <p class="title-sub">DIVINE SERVICES 🙏</p>
+</div>
+
+</div>
 
 </header>
 
@@ -128,7 +161,8 @@ header{
 </div>
 
 <!-- Family Pooja -->
-<!-- <div class="pooja">
+<!--
+<div class="pooja">
 
 <h3>Maha Nakshatra Homam Special Pooja (Family)</h3>
 
@@ -137,7 +171,7 @@ header{
 Offerings include Vastram, Kumkum, Ghee, Fruits, Flower Mala and Dakshina.
 </p>
 
-<p><b>Location:</b> Draksharamam </p>
+<p><b>Location:</b> Draksharamam</p>
 
 <div class="price">₹2116</div>
 
@@ -150,9 +184,10 @@ Offerings include Vastram, Kumkum, Ghee, Fruits, Flower Mala and Dakshina.
 
 <a href="https://tally.so/r/MeLxg8" target="_blank">
 <button class="btn">Enter Details (Family)</button>
-</a> -->
+</a>
 
 </div>
+-->
 
 </div>
 
