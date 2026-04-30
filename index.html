@@ -83,37 +83,66 @@ header{
     padding:20px;
 }
 
+/* Section */
 .section-card{
     background:white;
     margin:25px auto;
-    padding:25px;
+    padding:20px;
     border-radius:12px;
-    max-width:700px;
+    max-width:1000px;
     box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
-/* Unified Header Color */
+/* Section Title */
 .section-title{
     color:#8B0000;
+    margin-bottom:10px;
+}
+
+/* ===== CAROUSEL ===== */
+.slider{
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+    padding:10px;
+    scroll-snap-type:x mandatory;
+}
+
+/* Card */
+.service-card{
+    min-width:280px;
+    background:white;
+    border-radius:12px;
+    padding:15px;
+    box-shadow:0 0 10px rgba(0,0,0,0.12);
+    scroll-snap-align:start;
+    flex-shrink:0;
+    text-align:center;
+}
+
+/* Hide scrollbar */
+.slider::-webkit-scrollbar{
+    display:none;
 }
 
 /* Price */
 .price{
     color:#cc0000;
-    font-size:30px;
+    font-size:28px;
     font-weight:bold;
-    margin:12px 0;
+    margin:10px 0;
 }
 
 /* Button */
 .btn{
     background:#ff6600;
     color:white;
-    padding:12px 22px;
+    padding:10px 18px;
     border:none;
     border-radius:6px;
-    font-size:16px;
+    font-size:15px;
     cursor:pointer;
+    margin-top:10px;
 }
 
 .btn:hover{
@@ -121,16 +150,12 @@ header{
 }
 
 .payment{
-    background:#fff;
-    padding:15px;
-    margin:20px 0;
-    border-radius:10px;
-    border:1px solid #eee;
+    margin:10px 0;
 }
 
 .desc{
-    line-height:1.8;
-    font-size:17px;
+    font-size:15px;
+    line-height:1.5;
 }
 </style>
 </head>
@@ -139,121 +164,132 @@ header{
 
 <header>
 <div class="header-content">
-
 <img src="icon.jpeg" class="logo">
-
 <div class="title-box">
 <p class="title-main">PENDYALA</p>
 <p class="title-sub">DIVINE SERVICES</p>
 </div>
-
 </div>
 </header>
 
-<!-- MENU -->
 <div class="menu">
 <a href="#poojas">Poojas</a>
 <a href="#astrology">Astrology</a>
 <a href="#muhurthas">Muhurthas</a>
 </div>
 
-<!-- Banner -->
 <img src="banner.png" class="header-img">
 
 <div class="container">
 
-<!-- POOJAS -->
+<!-- ================= POOJAS ================= -->
 <div id="poojas" class="section-card">
-
 <h2 class="section-title">Pooja Services</h2>
 
+<div class="slider">
+
+<div class="service-card">
 <h3>Maha Nakshatra Homam</h3>
-
-<p class="desc">
-🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra Aavahana with Graha Devatas and Maha Nakshatra Homam.
-</p>
-
-<p><b>Location:</b> Draksharamam Temple</p>
-
+<p class="desc">Sankalpam with Gothram, Name & Nakshatram.</p>
+<p><b>Draksharamam Temple</b></p>
 <div class="price">₹1601</div>
-
 <div class="payment">
-<p>Scan QR code to pay</p>
-<img src="upi-qr-1.jpeg" width="220">
+<img src="upi-qr-1.jpeg" width="180">
 </div>
-
 <button class="btn">Enter Details</button>
-
 </div>
 
-<!-- ASTROLOGY -->
-<div id="astrology" class="section-card">
+<div class="service-card">
+<h3>Ganapathi Homam</h3>
+<p class="desc">Removes obstacles & brings success.</p>
+<div class="price">₹1161</div>
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book Now</button>
+</div>
 
+<div class="service-card">
+<h3>Navagraha Homam</h3>
+<p class="desc">Balances all planetary doshas.</p>
+<div class="price">₹2100</div>
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book Now</button>
+</div>
+
+</div>
+</div>
+
+<!-- ================= ASTROLOGY ================= -->
+<div id="astrology" class="section-card">
 <h2 class="section-title">Astrology Services</h2>
 
-<p class="desc">🔯 Horoscope Analysis (Email in 48 hrs)</p>
+<div class="slider">
+
+<div class="service-card">
+<h3>Horoscope Analysis</h3>
+<p class="desc">Detailed report in 48 hours.</p>
 <div class="price">₹1000</div>
-
-<div class="payment">
-<img src="upi-qr-1.jpeg" width="220">
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
 </div>
-<button class="btn">Book Astrology</button>
 
-<hr>
-
-<p class="desc">🔯 Marriage Matching (2 Horoscopes)</p>
+<div class="service-card">
+<h3>Marriage Matching</h3>
+<p class="desc">2 horoscope compatibility check.</p>
 <div class="price">₹1800</div>
-
-<div class="payment">
-<img src="upi-qr-1.jpeg" width="220">
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
 </div>
-<button class="btn">Book Marriage Matching</button>
 
-<hr>
-
-<p class="desc">🔯 Personal Consultation</p>
+<div class="service-card">
+<h3>Personal Consultation</h3>
+<p class="desc">One-to-one astrology guidance.</p>
 <div class="price">₹2500</div>
-
-<div class="payment">
-<img src="upi-qr-1.jpeg" width="220">
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
 </div>
-<button class="btn">Book Consultation</button>
 
-<hr>
-
-<p class="desc">🔯 Premium Couple Consultation</p>
+<div class="service-card">
+<h3>Premium Couple Reading</h3>
+<p class="desc">Deep relationship analysis.</p>
 <div class="price">₹3500</div>
-
-<div class="payment">
-<img src="upi-qr-1.jpeg" width="220">
-</div>
-<button class="btn">Book Couple Consultation</button>
-
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
 </div>
 
-<!-- MUHURTHAS -->
+</div>
+</div>
+
+<!-- ================= MUHURTHAS ================= -->
 <div id="muhurthas" class="section-card">
-
 <h2 class="section-title">Muhurtha Services</h2>
 
-<p class="desc">📅 Individual Muhurthas (Vehicle, Business, Property)</p>
+<div class="slider">
+
+<div class="service-card">
+<h3>Individual Muhurtham</h3>
+<p class="desc">Vehicle, Business, Property.</p>
 <div class="price">₹516</div>
-
-<div class="payment">
-<img src="upi-qr-1.jpeg" width="220">
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
 </div>
-<button class="btn">Book Individual Muhurtham</button>
 
-<hr>
-
-<p class="desc">📅 Marriage & Family Muhurthas (Tara Balam, Compatibility)</p>
+<div class="service-card">
+<h3>Marriage Muhurtham</h3>
+<p class="desc">Tara Balam & compatibility.</p>
 <div class="price">₹1116</div>
-
-<div class="payment">
-<img src="upi-qr-1.jpeg" width="220">
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
 </div>
-<button class="btn">Book Family Muhurtham</button>
 
+<div class="service-card">
+<h3>Griha Pravesh</h3>
+<p class="desc">House entry auspicious timing.</p>
+<div class="price">₹1500</div>
+<img src="upi-qr-1.jpeg" width="180">
+<button class="btn">Book</button>
+</div>
+
+</div>
 </div>
 
 </div>
