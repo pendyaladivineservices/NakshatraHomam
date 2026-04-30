@@ -101,11 +101,12 @@ header{
 /* SLIDER */
 .slider{
     display:flex;
-    overflow-x:auto;
     gap:15px;
+    overflow-x:auto;
     padding:10px;
     scroll-snap-type:x mandatory;
     scroll-behavior:smooth;
+    align-items:stretch;
 }
 
 .slider::-webkit-scrollbar{
@@ -128,13 +129,8 @@ header{
     font-size:20px;
 }
 
-.arrow.left{
-    left:-10px;
-}
-
-.arrow.right{
-    right:-10px;
-}
+.arrow.left{ left:-10px; }
+.arrow.right{ right:-10px; }
 
 /* CARD */
 .service-card{
@@ -144,51 +140,49 @@ header{
     border-radius:12px;
     padding:12px;
     box-shadow:0 0 8px rgba(0,0,0,0.10);
-    scroll-snap-align:start;
 
     display:flex;
     flex-direction:column;
-    height:100%;
+    scroll-snap-align:start;
 }
 
-/* TEXT */
+/* TITLE */
 .service-card h3{
-    font-size:16px;
-    margin:6px 0;
+    font-size:15px;
+    margin:5px 0;
 }
 
+/* DESCRIPTION (SHORTER) */
 .desc{
-    font-size:13px;
-    line-height:1.5;
+    font-size:12px;
+    line-height:1.4;
     color:#333;
-    text-align:center;
+    margin:4px 0;
 }
 
 /* PRICE */
 .price{
     color:#cc0000;
-    font-size:22px;
+    font-size:20px;
     font-weight:bold;
-    margin:8px 0;
+    margin:6px 0;
 }
 
 /* IMAGE */
 .service-card img{
-    width:100%;
-    max-width:140px;
-    height:auto;
+    width:110px;
+    height:110px;
     object-fit:contain;
-    margin:8px auto;
-    border-radius:8px;
+    margin:6px auto;
 }
 
-/* FOOTER FIX */
+/* FOOTER FIX (IMPORTANT) */
 .card-footer{
     margin-top:auto;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:10px;
+    gap:8px;
 }
 
 /* BUTTON */
@@ -214,17 +208,10 @@ header{
         max-width:220px;
     }
 
-    .title-main{
-        font-size:28px;
-    }
+    .title-main{ font-size:28px; }
+    .title-sub{ font-size:14px; }
 
-    .title-sub{
-        font-size:14px;
-    }
-
-    .arrow{
-        display:none;
-    }
+    .arrow{ display:none; }
 }
 </style>
 </head>
@@ -256,16 +243,15 @@ header{
 <h2 class="section-title">Pooja Services</h2>
 
 <div class="slider-wrapper">
-<button class="arrow left" onclick="scrollSlider(this, -300)">&#10094;</button>
-<button class="arrow right" onclick="scrollSlider(this, 300)">&#10095;</button>
+<button class="arrow left" onclick="scrollSlider(this,-300)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this,300)">&#10095;</button>
 
 <div class="slider">
 
 <div class="service-card">
 <h3>Maha Nakshatra Homam</h3>
-<p class="desc">🙏 Sankalpam with your Gothram, Name & Nakshatram followed by Nakshatra Aavahana with Graha Devatas and Maha Nakshatra Homam.</p>
-<p class="desc"><b>Location:</b> Draksharamam Temple</p>
-<p class="desc"><b>Date:</b> 08/05/2026</p>
+<p class="desc">Nakshatra + Graha Devata Homam</p>
+<p class="desc">Personal Sankalpam included</p>
 <div class="price">₹1601</div>
 
 <div class="card-footer">
@@ -276,9 +262,8 @@ header{
 
 <div class="service-card">
 <h3>Ganapathi Homam</h3>
-<p class="desc">Removes obstacles, clears negative energy, and brings success.</p>
-<p class="desc"><b>Location:</b> Draksharamam Temple</p>
-<p class="desc"><b>Date:</b> 08/05/2026</p>
+<p class="desc">Removes obstacles & delays</p>
+<p class="desc">Success in new beginnings</p>
 <div class="price">₹1161</div>
 
 <div class="card-footer">
@@ -289,9 +274,8 @@ header{
 
 <div class="service-card">
 <h3>Navagraha Homam</h3>
-<p class="desc">Balances planetary doshas and brings harmony and prosperity.</p>
-<p class="desc"><b>Location:</b> Draksharamam Temple</p>
-<p class="desc"><b>Date:</b> 08/05/2026</p>
+<p class="desc">Balances planetary doshas</p>
+<p class="desc">Brings peace & stability</p>
 <div class="price">₹2100</div>
 
 <div class="card-footer">
@@ -309,14 +293,14 @@ header{
 <h2 class="section-title">Astrology Services</h2>
 
 <div class="slider-wrapper">
-<button class="arrow left" onclick="scrollSlider(this, -300)">&#10094;</button>
-<button class="arrow right" onclick="scrollSlider(this, 300)">&#10095;</button>
+<button class="arrow left" onclick="scrollSlider(this,-300)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this,300)">&#10095;</button>
 
 <div class="slider">
 
 <div class="service-card">
-<h3>Horoscope Analysis</h3>
-<p class="desc">Complete horoscope analysis with predictions delivered in 48 hours.</p>
+<h3>Horoscope</h3>
+<p class="desc">Career, marriage & life reading</p>
 <div class="price">₹1000</div>
 
 <div class="card-footer">
@@ -326,8 +310,8 @@ header{
 </div>
 
 <div class="service-card">
-<h3>Marriage Matching</h3>
-<p class="desc">Compatibility analysis with guna matching report.</p>
+<h3>Marriage Match</h3>
+<p class="desc">Guna matching report</p>
 <div class="price">₹1800</div>
 
 <div class="card-footer">
@@ -345,14 +329,14 @@ header{
 <h2 class="section-title">Muhurtha Services</h2>
 
 <div class="slider-wrapper">
-<button class="arrow left" onclick="scrollSlider(this, -300)">&#10094;</button>
-<button class="arrow right" onclick="scrollSlider(this, 300)">&#10095;</button>
+<button class="arrow left" onclick="scrollSlider(this,-300)">&#10094;</button>
+<button class="arrow right" onclick="scrollSlider(this,300)">&#10095;</button>
 
 <div class="slider">
 
 <div class="service-card">
-<h3>Individual Muhurthas</h3>
-<p class="desc">Auspicious timing for important events.</p>
+<h3>Individual Muhurtha</h3>
+<p class="desc">Vehicle, business timing</p>
 <div class="price">₹516</div>
 
 <div class="card-footer">
@@ -362,8 +346,8 @@ header{
 </div>
 
 <div class="service-card">
-<h3>Marriage Muhurthas</h3>
-<p class="desc">Best auspicious marriage dates.</p>
+<h3>Marriage Muhurtha</h3>
+<p class="desc">Best wedding dates</p>
 <div class="price">₹1116</div>
 
 <div class="card-footer">
@@ -379,9 +363,9 @@ header{
 </div>
 
 <script>
-function scrollSlider(btn, distance){
+function scrollSlider(btn, dist){
     const slider = btn.parentElement.querySelector(".slider");
-    slider.scrollBy({left: distance, behavior: "smooth"});
+    slider.scrollBy({left: dist, behavior:"smooth"});
 }
 </script>
 
