@@ -6,7 +6,9 @@
 <title>PENDYALA DIVINE SERVICES</title>
 
 <style>
-html{ scroll-behavior:smooth; }
+html{
+    scroll-behavior:smooth;
+}
 
 body{
     margin:0;
@@ -38,8 +40,16 @@ header{
     padding:6px;
 }
 
-.title-main{ font-size:36px; font-weight:bold; margin:0; }
-.title-sub{ font-size:18px; }
+.title-main{
+    font-size:36px;
+    font-weight:bold;
+    margin:0;
+}
+
+.title-sub{
+    font-size:18px;
+    margin-top:5px;
+}
 
 /* MENU */
 .menu{
@@ -73,109 +83,148 @@ header{
         padding:6px 8px;
     }
 }
+/* BANNER */
+.header-img{
+    width:100%;
+    height:auto;
+}
+
 /* CONTAINER */
 .container{
-    padding:20px;
+    padding:15px;
+}
+
+/* SECTION */
+.section-card{
+    background:white;
+    margin:20px auto;
+    padding:15px;
+    border-radius:12px;
+    max-width:1100px;
+    box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
 .section-title{
     color:#8B0000;
-    font-size:24px;
-    margin-bottom:20px;
+    margin-bottom:10px;
+    font-size:22px;
 }
 
-/* GRID */
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
-    gap:20px;
+/* SLIDER WRAPPER */
+.slider-wrapper{
+    position:relative;
 }
+
+/* SLIDER */
+.slider{
+    display:flex;
+    overflow-x:auto;
+    gap:15px;
+    padding:10px;
+    scroll-snap-type:x mandatory;
+    scroll-behavior:smooth;
+}
+
+.slider::-webkit-scrollbar{
+    display:none;
+}
+
+/* ARROWS */
+.arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:#ff6600;
+    color:white;
+    border:none;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+    z-index:5;
+}
+
+.arrow.left{ left:-10px; }
+.arrow.right{ right:-10px; }
 
 /* CARD */
-.card{
+.service-card{
+    min-width:260px;
+    max-width:260px;
     background:white;
     border-radius:12px;
-    padding:15px;
-    box-shadow:0 0 10px rgba(0,0,0,0.12);
-    transition:0.3s;
-}
-.card:hover{ transform:translateY(-5px); }
+    padding:12px;
+    box-shadow:0 0 8px rgba(0,0,0,0.10);
+    scroll-snap-align:start;
 
-/* IMAGE GALLERY */
-.image-gallery{ text-align:center; }
-
-.main-image{
-    width:100%;
-    height:180px;
-    overflow:hidden;
-    border-radius:8px;
-}
-
-.main-image img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    transition:transform 0.3s ease;
-}
-
-/* ZOOM */
-.main-image:hover img{
-    transform:scale(1.6);
-}
-
-/* THUMBS */
-.thumbs{
     display:flex;
-    justify-content:center;
-    gap:6px;
-    margin-top:8px;
+    flex-direction:column;
 }
 
-.thumbs img{
-    width:45px;
-    height:45px;
-    object-fit:cover;
-    border-radius:6px;
-    cursor:pointer;
-    border:2px solid transparent;
+.card-content{
+    flex:1;
 }
 
-.thumbs img:hover{
-    border:2px solid #ff6600;
+.service-card h3{
+    font-size:16px;
+    margin:6px 0;
 }
-
-/* TEXT */
-.card h3{ font-size:16px; }
 
 .desc{
     font-size:13px;
-    color:#444;
+    line-height:1.5;
+    color:#333;
 }
 
 .price{
     color:#cc0000;
-    font-size:20px;
+    font-size:22px;
     font-weight:bold;
     margin:8px 0;
 }
 
-/* BUTTON */
+/* QR */
+.service-card img{
+    width:100%;
+    max-width:170px;
+    height:auto;
+    object-fit:contain;
+    margin:8px auto;
+    border-radius:8px;
+}
+
+/* FOOTER FIX */
+.card-footer{
+    margin-top:auto;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
 .btn{
     background:#ff6600;
     color:white;
-    padding:8px;
+    padding:8px 16px;
+    border:none;
     border-radius:6px;
+    font-size:14px;
+    cursor:pointer;
+    width:100%;
     text-decoration:none;
-    display:block;
-    margin-top:8px;
+    display:inline-block;
 }
+
 .btn:hover{
     background:#e65c00;
 }
 
 /* MOBILE */
 @media (max-width:600px){
-    .main-image{ height:150px; }
+    .service-card{
+        min-width:220px;
+        max-width:220px;
+    }
 }
 </style>
 </head>
@@ -192,12 +241,20 @@ header{
 </div>
 </header>
 
+<!-- <div class="menu">
+<a href="#poojas">Poojas</a>
+<a href="#astrology">Astrology</a>
+<a href="#muhurthas">Muhurthas</a>
+</div> -->
+
 <div class="menu">
 <a href="index.html">Poojas</a>
 <a href="astrology.html">Astrology</a>
 <a href="muhurthas.html">Muhurthas</a>
 <a href="products.html">Spiritual Products</a>
 </div>
+    
+<img src="banner.png" class="header-img">
 
 <div class="container">
 
@@ -263,10 +320,12 @@ header{
 
 </div>
 
+
 <script>
-function changeImage(el){
-    const main = el.closest('.image-gallery').querySelector('.active-img');
-    main.src = el.src;
+function scrollSlider(btn, dir){
+    const wrapper = btn.parentElement;
+    const slider = wrapper.querySelector('.slider');
+    slider.scrollBy({ left: dir * 300, behavior: 'smooth' });
 }
 </script>
 
