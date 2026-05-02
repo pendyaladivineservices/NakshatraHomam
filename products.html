@@ -15,7 +15,7 @@ body{
     text-align:center;
 }
 
-/* HEADER (RESTORED ORIGINAL) */
+/* HEADER */
 header{
     background:#ff6600;
     color:white;
@@ -69,7 +69,6 @@ header{
     border-radius:6px;
 }
 
-/* MOBILE */
 @media (max-width:600px){
     .menu{
         justify-content:space-around;
@@ -107,7 +106,7 @@ header{
     box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
-/* SQUARE IMAGE (1:1) */
+/* IMAGE */
 .main-image{
     width:100%;
     aspect-ratio:1/1;
@@ -284,25 +283,20 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 </div>
 
 <script>
-// IMAGE CHANGE
+// IMAGE
 function changeImage(el){
     const main = el.closest('.card').querySelector('.active-img');
     main.src = el.src;
 }
 
-// SEARCH (FIXED)
+// SEARCH
 document.getElementById("searchBox").addEventListener("keyup", function(){
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
 
     cards.forEach(card=>{
-        let title = card.querySelector("h3").innerText.toLowerCase();
-
-        if(title.includes(filter)){
-            card.style.display = "";   // keeps grid layout
-        } else {
-            card.style.display = "none";
-        }
+        let text = card.innerText.toLowerCase();
+        card.style.display = text.includes(filter) ? "" : "none";
     });
 });
 
@@ -314,28 +308,7 @@ function changeQty(btn, change){
     qtyEl.innerText = qty;
 }
 
-// WHATSAPP ORDER
-function orderWhatsApp(btn){
-    let card = btn.closest(".card");
-    let name = card.querySelector("h3").innerText;
-    let price = card.querySelector(".price").innerText;
-    let qty = card.querySelector(".qty").innerText;
-
-    let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
-    let url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`;
-
-    window.open(url, "_blank");
-}
-</script>
-// QTY
-function changeQty(btn, change){
-    let qtyEl = btn.parentElement.querySelector(".qty");
-    let qty = parseInt(qtyEl.innerText);
-    qty = Math.max(1, qty + change);
-    qtyEl.innerText = qty;
-}
-
-// WHATSAPP ORDER
+// WHATSAPP
 function orderWhatsApp(btn){
     let card = btn.closest(".card");
     let name = card.querySelector("h3").innerText;
