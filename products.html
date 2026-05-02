@@ -15,12 +15,11 @@ body{
     text-align:center;
 }
 
-/* HEADER */
+/* HEADER (RESTORED ORIGINAL) */
 header{
     background:#ff6600;
     color:white;
     padding:12px;
-    position:relative;
 }
 
 .header-content{
@@ -32,29 +31,22 @@ header{
 }
 
 .logo{
-    width:90px;
-    height:90px;
+    width:110px;
+    height:110px;
     border-radius:50%;
     background:white;
     padding:6px;
 }
 
 .title-main{
-    font-size:28px;
+    font-size:36px;
     font-weight:bold;
     margin:0;
 }
 
 .title-sub{
-    font-size:16px;
-}
-
-/* CART */
-#cartBox{
-    position:absolute;
-    right:20px;
-    top:20px;
     font-size:18px;
+    margin-top:5px;
 }
 
 /* MENU */
@@ -72,8 +64,20 @@ header{
     text-decoration:none;
     color:#ff6600;
     font-weight:bold;
-    font-size:14px;
+    font-size:15px;
     padding:6px 10px;
+    border-radius:6px;
+}
+
+/* MOBILE */
+@media (max-width:600px){
+    .menu{
+        justify-content:space-around;
+    }
+    .menu a{
+        font-size:13px;
+        padding:6px 8px;
+    }
 }
 
 /* CONTAINER */
@@ -81,76 +85,94 @@ header{
     padding:20px;
 }
 
+/* TITLE */
 .section-title{
     color:#8B0000;
-    font-size:22px;
+    font-size:24px;
+    margin-bottom:20px;
 }
 
-/* GRID (smaller cards) */
+/* GRID */
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:20px;
 }
 
 /* CARD */
 .card{
     background:white;
-    border-radius:10px;
-    padding:10px;
-    box-shadow:0 0 8px rgba(0,0,0,0.1);
+    border-radius:12px;
+    padding:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.12);
 }
 
-/* IMAGE */
+/* SQUARE IMAGE (1:1) */
 .main-image{
     width:100%;
-    height:150px;
+    aspect-ratio:1/1;
     overflow:hidden;
+    border-radius:8px;
 }
 
 .main-image img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
 }
 
+/* THUMBS */
 .thumbs{
     display:flex;
     justify-content:center;
-    gap:5px;
+    gap:6px;
+    margin-top:8px;
 }
 
 .thumbs img{
-    width:40px;
-    height:40px;
+    width:45px;
+    height:45px;
+    object-fit:cover;
+    border-radius:6px;
     cursor:pointer;
 }
 
 /* TEXT */
-.card h3{ font-size:14px; }
-.desc{ font-size:12px; }
-.price{ font-size:16px; color:red; }
+.card h3{ font-size:15px; }
+
+.desc{
+    font-size:13px;
+    color:#444;
+}
+
+.price{
+    color:#cc0000;
+    font-size:18px;
+    font-weight:bold;
+}
 
 /* BUTTON */
 .btn{
     background:#ff6600;
     color:white;
-    padding:6px;
-    display:block;
-    margin-top:6px;
+    padding:7px;
     border-radius:6px;
     text-decoration:none;
-    font-size:13px;
+    display:block;
+    margin-top:8px;
 }
 
-.whatsapp{ background:#25D366; }
+.whatsapp{
+    background:#25D366;
+}
 
 /* QTY */
 .qty-box{
     display:flex;
     justify-content:center;
+    align-items:center;
     gap:10px;
-    margin-top:8px;
+    margin-top:10px;
 }
 </style>
 </head>
@@ -158,8 +180,6 @@ header{
 <body>
 
 <header>
-<div id="cartBox">🛒 <span id="cartCount">0</span></div>
-
 <div class="header-content">
 <img src="icon.jpeg" class="logo">
 <div>
@@ -207,7 +227,6 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <button onclick="changeQty(this,1)">+</button>
 </div>
 
-<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
 <a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 </div>
 
@@ -224,7 +243,7 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 </div>
 
 <h3>Navagraha Mala</h3>
-<p class="desc">Balances planetary energies.</p>
+<p class="desc">Balances all planetary energies and removes doshas.</p>
 <div class="price">₹799</div>
 
 <div class="qty-box">
@@ -233,7 +252,6 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <button onclick="changeQty(this,1)">+</button>
 </div>
 
-<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
 <a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 </div>
 
@@ -250,7 +268,7 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 </div>
 
 <h3>Spatika Mala</h3>
-<p class="desc">Improves focus & positivity.</p>
+<p class="desc">Improves focus, calmness, and positive vibrations.</p>
 <div class="price">₹699</div>
 
 <div class="qty-box">
@@ -259,7 +277,6 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <button onclick="changeQty(this,1)">+</button>
 </div>
 
-<a href="#" class="btn" onclick="addToCart(this)">Add to Cart</a>
 <a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
 </div>
 
@@ -292,27 +309,14 @@ function changeQty(btn, change){
     qtyEl.innerText = qty;
 }
 
-// CART
-let cartCount = 0;
-function addToCart(btn){
-    let card = btn.closest(".card");
-    let name = card.querySelector("h3").innerText;
-    let qty = card.querySelector(".qty").innerText;
-
-    cartCount += parseInt(qty);
-    document.getElementById("cartCount").innerText = cartCount;
-
-    alert(name + " added (Qty: " + qty + ")");
-}
-
-// WHATSAPP
+// WHATSAPP ORDER
 function orderWhatsApp(btn){
     let card = btn.closest(".card");
     let name = card.querySelector("h3").innerText;
     let price = card.querySelector(".price").innerText;
     let qty = card.querySelector(".qty").innerText;
 
-    let message = `Hello, I want to order:\n${name}\n${price}\nQty: ${qty}`;
+    let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
     let url = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
