@@ -95,7 +95,7 @@ header{
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(220px,280px));
-    justify-content:center;  /* centers items */
+    justify-content:center;
     gap:20px;
 }
 
@@ -227,7 +227,8 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <button onclick="changeQty(this,1)">+</button>
 </div>
 
-<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
+<a href="#" class="btn" onclick="buyNow(this)">Buy Now</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this, event)">Order on WhatsApp</a>
 </div>
 
 <!-- PRODUCT 2 -->
@@ -252,7 +253,8 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <button onclick="changeQty(this,1)">+</button>
 </div>
 
-<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
+<a href="#" class="btn" onclick="buyNow(this)">Buy Now</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this, event)">Order on WhatsApp</a>
 </div>
 
 <!-- PRODUCT 3 -->
@@ -277,7 +279,8 @@ style="padding:10px;width:90%;max-width:400px;border-radius:8px;border:1px solid
 <button onclick="changeQty(this,1)">+</button>
 </div>
 
-<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this)">Order on WhatsApp</a>
+<a href="#" class="btn" onclick="buyNow(this)">Buy Now</a>
+<a href="#" class="btn whatsapp" onclick="orderWhatsApp(this, event)">Order on WhatsApp</a>
 </div>
 
 </div>
@@ -309,9 +312,20 @@ function changeQty(btn, change){
     qtyEl.innerText = qty;
 }
 
+// BUY NOW → TALLY
+function buyNow(btn){
+    let card = btn.closest(".card");
+    let name = card.querySelector("h3").innerText;
+    let price = card.querySelector(".price").innerText;
+    let qty = card.querySelector(".qty").innerText;
+
+    let url = `https://tally.so/r/ZjPVdo?product=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&qty=${qty}`;
+    window.open(url, "_blank");
+}
+
 // WHATSAPP
 function orderWhatsApp(btn, e){
-    e.preventDefault(); // stop default link
+    e.preventDefault();
 
     let card = btn.closest(".card");
     let name = card.querySelector("h3").innerText;
@@ -319,9 +333,7 @@ function orderWhatsApp(btn, e){
     let qty = card.querySelector(".qty").innerText;
 
     let message = `Hello, I want to order:\n\n${name}\nPrice: ${price}\nQuantity: ${qty}`;
-
-    let phone = "919347184217";
-    let url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    let url = `https://wa.me/919347184217?text=${encodeURIComponent(message)}`;
 
     window.open(url, "_blank");
 }
