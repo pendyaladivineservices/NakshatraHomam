@@ -459,8 +459,13 @@ function submitOrder(){
             qty: selectedQty
         })
     })
-    .then(() => window.location.href="payment.html")
-    .catch(() => alert("Error saving order"));
+    .then(res => res.text())
+    .then(() => {
+        window.location.href = "payment.html";
+    })
+    .catch(() => {
+        alert("Error saving order");
+    });
 }
 </script>
 
