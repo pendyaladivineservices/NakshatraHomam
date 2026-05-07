@@ -427,49 +427,96 @@ function closeCheckout(){
 
 function submitOrder(){
 
-    let name = document.getElementById("c_name").value;
-    let phone = document.getElementById("c_phone").value;
-    let address = document.getElementById("c_address").value;
-    let email = document.getElementById("c_email").value;
+    let name = document.getElementById("c_name").value.trim();
+
+    let phone = document.getElementById("c_phone").value.trim();
+
+    let address = document.getElementById("c_address").value.trim();
+
+    let email = document.getElementById("c_email").value.trim();
+
+    // VALIDATIONS
+
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if(!name || !phone || !address || !email){
+
         alert("Please fill all details");
+
         return;
     }
 
-    localStorage.setItem("order_name", name);
-    localStorage.setItem("order_phone", phone);
-    localStorage.setItem("order_address", address);
-    localStorage.setItem("order_email", email);
-    localStorage.setItem("order_product", selectedProduct);
-    localStorage.setItem("order_price", selectedPrice);
-    localStorage.setItem("order_qty", selectedQty);
+    if(!nameRegex.test(name)){
+
+        alert("Name should contain only letters");
+
+        return;
+    }
+
+    if(!phoneRegex.test(phone)){
+
+        alert("Please enter valid phone number");
+
+        return;
+    }
+
+    if(!emailRegex.test(email)){
+
+        alert("Please enter valid email");
+
+        return;
+    }
 
     fetch("https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec", {
+
         method: "POST",
-        body: new URLSearchParams({
+
+        body: JSON.stringify({
+
+            type: "product",
+
             name: name,
+
             phone: phone,
-            email: email,
+
             address: address,
+
+            email: email,
+
             product: selectedProduct,
+
             qty: selectedQty
         })
+
     })
-    .then(res => res.text())
-    .then(data => {
-    let response = JSON.parse(data);
 
-    localStorage.setItem("order_id", response.orderId);
+    .then(res => res.json())
 
-    alert("Order Created Successfully!\nOrder ID: " + response.orderId);
+    .then(response => {
 
-    window.location.href = "payment.html";
-})
+        localStorage.setItem(
+            "order_id",
+            response.orderId
+        );
+
+        // DIRECT PAYMENT REDIRECT
+        window.location.href =
+        "payment.html";
+
+    })
+
     .catch(err => {
-        console.error("Fetch error:", err);
+
+        console.error(err);
+
         alert("Error saving order");
+
     });
+
 }
 </script>
 
