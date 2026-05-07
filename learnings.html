@@ -435,61 +435,108 @@ function submitLearning(){
         return;
     }
 
-    fetch(
-    "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
-    {
+    // fetch(
+    // "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
+    // {
 
-        method:"POST",
+    //     method:"POST",
 
-        body:JSON.stringify({
+    //     body:JSON.stringify({
 
-            type:"learning",
+    //         type:"learning",
 
-            course:selectedCourse,
+    //         course:selectedCourse,
 
-            price:selectedPrice,
+    //         price:selectedPrice,
 
-            name:name,
+    //         name:name,
 
-            phone:phone,
+    //         phone:phone,
 
-            email:email,
+    //         email:email,
 
-            city:city,
+    //         city:city,
 
-            age:age,
+    //         age:age,
 
-            notes:notes
+    //         notes:notes
 
-        })
+    //     })
 
-    })
+    // })
 
-    .then(res => res.json())
+    // .then(res => res.json())
 
-    .then(response => {
+    // .then(response => {
 
-        localStorage.setItem(
-            "bookingId",
-            response.bookingId
-        );
+    //     localStorage.setItem(
+    //         "bookingId",
+    //         response.bookingId
+    //     );
 
-        localStorage.setItem(
-            "payment_amount",
-            selectedPrice
-        );
+    //     localStorage.setItem(
+    //         "payment_amount",
+    //         selectedPrice
+    //     );
 
-        window.location.href =
-        "payment.html";
-    })
+    //     window.location.href =
+    //     "payment.html";
+    // })
 
-    .catch(err => {
+    // .catch(err => {
 
-        console.error(err);
+    //     console.error(err);
 
-        alert("Error submitting registration");
+    //     alert("Error submitting registration");
 
-    });
+    // });
+
+    // SAVE TEMP DATA
+
+localStorage.setItem(
+"learning_course",
+selectedCourse
+);
+
+localStorage.setItem(
+"learning_price",
+selectedPrice
+);
+
+localStorage.setItem(
+"learning_name",
+name
+);
+
+localStorage.setItem(
+"learning_phone",
+phone
+);
+
+localStorage.setItem(
+"learning_email",
+email
+);
+
+localStorage.setItem(
+"learning_city",
+city
+);
+
+localStorage.setItem(
+"learning_age",
+age
+);
+
+localStorage.setItem(
+"learning_notes",
+notes
+);
+
+// OPEN PAYMENT PAGE
+
+window.location.href =
+"payment.html";
 
 }
 
