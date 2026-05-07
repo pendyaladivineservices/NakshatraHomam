@@ -457,10 +457,15 @@ function submitOrder(){
         })
     })
     .then(res => res.text())
-    .then(data => {
-        console.log("Response:", data);
-        window.location.href = "payment.html";
-    })
+.then(data => {
+    let response = JSON.parse(data);
+
+    localStorage.setItem("order_id", response.orderId);
+
+    alert("Order Created Successfully!\nOrder ID: " + response.orderId);
+
+    window.location.href = "payment.html";
+})
     .catch(err => {
         console.error("Fetch error:", err);
         alert("Error saving order");
