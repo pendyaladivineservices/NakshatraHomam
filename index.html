@@ -524,33 +524,56 @@ function submitPoojaBooking(){
         return;
     }
 
-    fetch("https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec", {
+    // fetch("https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec", {
     
-        method: "POST",
+    //     method: "POST",
     
-        body: JSON.stringify(data)
+    //     body: JSON.stringify(data)
     
-    })
+    // })
 
-    .then(res => res.json())
+    // .then(res => res.json())
 
-    .then(response => {
+    // .then(response => {
 
 
 
-        // PAYMENT LINK
-        window.location.href =
-        "https://rzp.io/rzp/YOURPAYMENTLINK";
+    //     // PAYMENT LINK
+    //     window.location.href =
+    //     "https://rzp.io/rzp/YOURPAYMENTLINK";
 
-    })
+    // })
 
-    .catch(err => {
+    // .catch(err => {
 
-        console.log(err);
+    //     console.log(err);
 
-        alert("Error submitting booking");
+    //     alert("Error submitting booking");
 
-    });
+    // });
+
+    // SAVE TEMP DATA
+
+localStorage.setItem("temp_type", "pooja");
+
+localStorage.setItem("temp_pooja", selectedPooja);
+localStorage.setItem("temp_price", selectedPrice);
+
+localStorage.setItem("temp_name1", name1);
+localStorage.setItem("temp_nak1", nak1);
+
+localStorage.setItem("temp_name2", name2);
+localStorage.setItem("temp_nak2", nak2);
+
+localStorage.setItem("temp_name3", name3);
+localStorage.setItem("temp_nak3", nak3);
+
+localStorage.setItem("temp_phone", phone);
+localStorage.setItem("temp_email", email);
+
+// REDIRECT TO PAYMENT PAGE
+
+window.location.href = "payment.html";
 
 }
 
