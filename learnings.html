@@ -7,6 +7,10 @@
 
 <style>
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
@@ -71,11 +75,13 @@ header{
     border-radius:6px;
 }
 
+/* CONTAINER */
+
 .container{
     padding:20px;
 }
 
-/* CARD */
+/* CARDS */
 
 .learn-card{
     background:white;
@@ -92,7 +98,8 @@ header{
     margin-top:0;
 }
 
-.learn-card p{
+.learn-card p,
+.learn-card li{
     line-height:1.7;
     color:#333;
 }
@@ -105,6 +112,52 @@ header{
     text-decoration:none;
     display:inline-block;
     margin-top:10px;
+    border:none;
+    cursor:pointer;
+}
+
+/* POPUP */
+
+#learningPopup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.popup-box{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:90%;
+    max-width:420px;
+    max-height:90vh;
+    overflow:auto;
+    text-align:left;
+}
+
+.popup-box input,
+.popup-box textarea{
+    width:100%;
+    padding:10px;
+    margin:6px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+.label{
+    font-size:14px;
+    font-weight:bold;
+    color:#444;
+    margin-top:10px;
+    display:block;
 }
 
 </style>
@@ -129,48 +182,305 @@ header{
 <a href="index.html">Poojas</a>
 <a href="astrology.html">Astrology</a>
 <a href="muhurthas.html">Muhurthas</a>
-<a href="products.html">Spiritual Products</a>
+<a href="products.html">Products</a>
 <a href="learnings.html">Learnings</a>
 </div>
 
 <div class="container">
 
-<div class="learn-card">
-
-<h2>What is Rudraksha?</h2>
-
-<p>
-Rudraksha beads are sacred seeds traditionally used for spiritual growth,
-peace, protection, and meditation. Different mukhis have different spiritual
-benefits according to ancient scriptures.
-</p>
-
-</div>
+<!-- COURSE 1 -->
 
 <div class="learn-card">
 
-<h2>Importance of Maha Shivaratri</h2>
+<h2>Summer Special Spiritual Learning Program</h2>
 
 <p>
-Maha Shivaratri is one of the most powerful nights dedicated to Lord Shiva.
-Devotees perform fasting, abhishekam, and chanting for spiritual upliftment
-and divine blessings.
+A specially designed 30 Days learning program for children and beginners.
 </p>
 
+<ul>
+<li>Basic Slokas</li>
+<li>Panchatantra Stories</li>
+<li>Vemana Padyalu</li>
+<li>Sumathi Satakam Padyalu</li>
+<li>Spiritual Values & Culture</li>
+</ul>
+
+<p><b>Duration:</b> 30 Days</p>
+
+<p><b>Course Fee:</b> ₹2100</p>
+
+<button class="learn-btn"
+onclick="openLearningPopup(
+'Summer Special Spiritual Learning Program',
+'2100'
+)">
+Join Now
+</button>
+
 </div>
+
+<!-- COURSE 2 -->
 
 <div class="learn-card">
 
-<h2>Benefits of Spatika Shivling</h2>
+<h2>Hanuman Chalisa Learning Course</h2>
 
 <p>
-Spatika Shivling is believed to bring positivity, peace, prosperity, and
-remove negative energies from the surroundings.
+Learn Hanuman Chalisa with proper pronunciation, meaning,
+and devotional chanting guidance.
 </p>
 
+<p><b>Duration:</b> 30 Days</p>
+
+<p><b>Course Fee:</b> ₹1500</p>
+
+<button class="learn-btn"
+onclick="openLearningPopup(
+'Hanuman Chalisa Learning Course',
+'1500'
+)">
+Join Now
+</button>
+
+</div>
+
+<!-- COURSE 3 -->
+
+<div class="learn-card">
+
+<h2>Dakshinamurthy Stotram Learning</h2>
+
+<p>
+Learn Dakshinamurthy Stotram with proper chanting
+and spiritual understanding.
+</p>
+
+<p><b>Duration:</b> 20 Days</p>
+
+<p><b>Course Fee:</b> ₹1500</p>
+
+<button class="learn-btn"
+onclick="openLearningPopup(
+'Dakshinamurthy Stotram Learning',
+'1500'
+)">
+Join Now
+</button>
+
 </div>
 
 </div>
+
+<!-- POPUP -->
+
+<div id="learningPopup">
+
+<div class="popup-box">
+
+<h3>Learning Program Registration</h3>
+
+<p>
+<b>Course:</b>
+<span id="learningCourseName"></span>
+</p>
+
+<p>
+<b>Fee:</b>
+₹<span id="learningCoursePrice"></span>
+</p>
+
+<label class="label">Full Name</label>
+<input id="learn_name">
+
+<label class="label">Phone Number</label>
+<input id="learn_phone">
+
+<label class="label">Email ID</label>
+<input id="learn_email">
+
+<label class="label">City / Location</label>
+<input id="learn_city">
+
+<label class="label">Age</label>
+<input id="learn_age">
+
+<label class="label">Any Notes</label>
+<textarea id="learn_notes"></textarea>
+
+<button class="learn-btn"
+style="width:100%;margin-top:15px;"
+onclick="submitLearning()">
+Proceed to Payment
+</button>
+
+<button
+style="
+width:100%;
+padding:10px;
+margin-top:10px;
+border-radius:6px;
+border:1px solid #ccc;
+background:white;
+cursor:pointer;
+"
+onclick="closeLearningPopup()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+let selectedCourse = "";
+let selectedPrice = "";
+
+function openLearningPopup(course, price){
+
+    selectedCourse = course;
+    selectedPrice = price;
+
+    document.getElementById(
+        "learningCourseName"
+    ).innerText = course;
+
+    document.getElementById(
+        "learningCoursePrice"
+    ).innerText = price;
+
+    document.getElementById(
+        "learningPopup"
+    ).style.display = "flex";
+}
+
+function closeLearningPopup(){
+
+    document.getElementById(
+        "learningPopup"
+    ).style.display = "none";
+}
+
+function submitLearning(){
+
+    let name =
+    document.getElementById("learn_name")
+    .value.trim();
+
+    let phone =
+    document.getElementById("learn_phone")
+    .value.trim();
+
+    let email =
+    document.getElementById("learn_email")
+    .value.trim();
+
+    let city =
+    document.getElementById("learn_city")
+    .value.trim();
+
+    let age =
+    document.getElementById("learn_age")
+    .value.trim();
+
+    let notes =
+    document.getElementById("learn_notes")
+    .value.trim();
+
+    // VALIDATION
+
+    const nameRegex = /^[A-Za-z\s]+$/;
+
+    const phoneRegex =
+    /^[0-9+\-\s()]{7,20}$/;
+
+    const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!name || !phone || !email){
+
+        alert("Please fill required fields");
+        return;
+    }
+
+    if(!nameRegex.test(name)){
+
+        alert("Invalid name");
+        return;
+    }
+
+    if(!phoneRegex.test(phone)){
+
+        alert("Invalid phone number");
+        return;
+    }
+
+    if(!emailRegex.test(email)){
+
+        alert("Invalid email");
+        return;
+    }
+
+    fetch(
+    "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
+    {
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            type:"learning",
+
+            course:selectedCourse,
+
+            price:selectedPrice,
+
+            name:name,
+
+            phone:phone,
+
+            email:email,
+
+            city:city,
+
+            age:age,
+
+            notes:notes
+
+        })
+
+    })
+
+    .then(res => res.json())
+
+    .then(response => {
+
+        localStorage.setItem(
+            "bookingId",
+            response.bookingId
+        );
+
+        localStorage.setItem(
+            "payment_amount",
+            selectedPrice
+        );
+
+        window.location.href =
+        "payment.html";
+    })
+
+    .catch(err => {
+
+        console.error(err);
+
+        alert("Error submitting registration");
+
+    });
+
+}
+
+</script>
 
 </body>
 </html>
