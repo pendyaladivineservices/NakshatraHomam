@@ -371,7 +371,7 @@ function changeImage(el){
     main.src = el.src;
 }
 
-// SEARCH (FIXED SIZE ISSUE)
+// SEARCH
 document.getElementById("searchBox").addEventListener("keyup", function(){
     let filter = this.value.toLowerCase();
     let cards = document.querySelectorAll(".card");
@@ -415,7 +415,6 @@ function openCheckout(btn){
     selectedPrice = card.querySelector(".price").innerText;
     selectedQty = card.querySelector(".qty").innerText;
 
-    // ✅ fill popup fields
     document.getElementById("popup_product_name").innerText = selectedProduct;
     document.getElementById("popup_qty").innerText = selectedQty;
 
@@ -427,6 +426,7 @@ function closeCheckout(){
 }
 
 function submitOrder(){
+
     let name = document.getElementById("c_name").value;
     let phone = document.getElementById("c_phone").value;
     let address = document.getElementById("c_address").value;
@@ -446,25 +446,26 @@ function submitOrder(){
     localStorage.setItem("order_qty", selectedQty);
 
     fetch("https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec", {
-    method: "POST",
-    body: new URLSearchParams({
-        name: name,
-        phone: phone,
-        email: email,
-        address: address,
-        product: selectedProduct,
-        qty: selectedQty
+        method: "POST",
+        body: new URLSearchParams({
+            name: name,
+            phone: phone,
+            email: email,
+            address: address,
+            product: selectedProduct,
+            qty: selectedQty
+        })
     })
-})
-.then(res => res.text())
-.then(data => {
-    console.log("Response:", data);
-    window.location.href = "payment.html";
-})
-.catch(err => {
-    console.error("Fetch error:", err);
-    alert("Error saving order");
-});
+    .then(res => res.text())
+    .then(data => {
+        console.log("Response:", data);
+        window.location.href = "payment.html";
+    })
+    .catch(err => {
+        console.error("Fetch error:", err);
+        alert("Error saving order");
+    });
+}
 </script>
 
 </body>
