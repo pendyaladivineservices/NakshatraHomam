@@ -259,7 +259,62 @@ header{
     }
 
 }
-    
+
+/* IOS DATE/TIME FIX */
+input[type="date"],
+input[type="time"]{
+
+    width:100%;
+    padding:12px;
+    margin:5px 0;
+    border:1px solid #999;
+    border-radius:8px;
+    font-size:16px;
+    background:#fff;
+    color:#333;
+
+    box-sizing:border-box;
+
+    appearance:auto;
+    -webkit-appearance:auto;
+
+    min-height:48px;
+}
+
+/* POPUP INPUT FIX */
+#astroPopup input,
+#astroPopup textarea{
+
+    width:100% !important;
+
+    box-sizing:border-box;
+
+    font-size:16px;
+
+    border:1px solid #999;
+
+    border-radius:8px;
+
+    background:#fff;
+
+    color:#333;
+}
+
+/* MOBILE POPUP FIX */
+@media (max-width:600px){
+
+    #astroPopup > div{
+
+        width:92% !important;
+
+        max-height:90vh;
+
+        overflow-y:auto;
+
+        padding:18px !important;
+    }
+
+}    
 </style>
 </head>
 
@@ -459,19 +514,19 @@ text-align:left;
 
 <input id="astro_name1"
 placeholder="Full Name"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_dob1"
 type="date"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_tob1"
 type="time"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_pob1"
 placeholder="Place of Birth"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <!-- SECOND PERSON -->
 
@@ -479,33 +534,33 @@ style="width:100%;padding:10px;margin:5px 0;">
 
 <input id="astro_name2"
 placeholder="Second Person Full Name"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_dob2"
 type="date"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_tob2"
 type="time"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_pob2"
 placeholder="Second Person Place of Birth"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 </div>
 
 <textarea id="astro_reason"
 placeholder="Reason / Problem"
-style="width:100%;padding:10px;margin:5px 0;"></textarea>
+style="padding:10px;margin:5px 0;"></textarea>
 
 <input id="astro_phone"
 placeholder="Phone Number"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <input id="astro_email"
 placeholder="Email ID"
-style="width:100%;padding:10px;margin:5px 0;">
+style="padding:10px;margin:5px 0;">
 
 <button
 onclick="submitAstrology()"
