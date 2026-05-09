@@ -441,7 +441,6 @@ Cancel
 function scrollSlider(btn, dir){
 
     const wrapper = btn.parentElement;
-
     const slider = wrapper.querySelector('.slider');
 
     slider.scrollBy({
@@ -456,201 +455,92 @@ let muhurthaType = "";
 let muhurthaService = "";
 let muhurthaPrice = "";
 
-// ================= OPEN FROM BUTTON =================
-    
+// OPEN FROM BUTTON (SAFE + CLEAN)
 function openMuhurthaPopupFromBtn(btn){
 
-    let type = btn.dataset.type;
-    let service = btn.dataset.service;
-    let price = btn.dataset.price;
+    muhurthaType = btn.dataset.type;
+    muhurthaService = btn.dataset.service;
+    muhurthaPrice = btn.dataset.price;
 
-    openMuhurthaPopup(type, service, price);
+    openMuhurthaPopup();
 }
 
-
-// ================= MAIN POPUP FUNCTION =================    
-function openMuhurthaPopup(type, service, price){
-
-    muhurthaType = type;
-
-    muhurthaService = service;
-
-    muhurthaPrice = price;
+// MAIN POPUP
+function openMuhurthaPopup(){
 
     document.getElementById("muhurthaPopup").style.display = "flex";
 
-    document.getElementById("muhurthaSecondPerson").style.display = "none";
-
-    if(type == "couple"){
-
-        document.getElementById("muhurthaSecondPerson").style.display = "block";
-
-    }
+    document.getElementById("muhurthaSecondPerson").style.display =
+        (muhurthaType === "couple") ? "block" : "none";
 }
 
 function closeMuhurthaPopup(){
-
     document.getElementById("muhurthaPopup").style.display = "none";
-
 }
 
 function submitMuhurtha(){
 
-    let name1 =
-    document.getElementById("m_name1").value.trim();
-
-    let nak1 =
-    document.getElementById("m_nak1").value.trim();
-
-    let name2 =
-    document.getElementById("m_name2").value.trim();
-
-    let nak2 =
-    document.getElementById("m_nak2").value.trim();
-
-    let eventName =
-    document.getElementById("m_event").value.trim();
-
-    let requirement =
-    document.getElementById("m_requirement").value.trim();
-
-    let phone =
-    document.getElementById("m_phone").value.trim();
-
-    let email =
-    document.getElementById("m_email").value.trim();
+    let name1 = document.getElementById("m_name1").value.trim();
+    let nak1 = document.getElementById("m_nak1").value.trim();
+    let name2 = document.getElementById("m_name2").value.trim();
+    let nak2 = document.getElementById("m_nak2").value.trim();
+    let eventName = document.getElementById("m_event").value.trim();
+    let requirement = document.getElementById("m_requirement").value.trim();
+    let phone = document.getElementById("m_phone").value.trim();
+    let email = document.getElementById("m_email").value.trim();
 
     const nameRegex = /^[A-Za-z\s]+$/;
-
     const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if(!name1 || !nak1 || !eventName || !phone || !email){
-
         alert("Please fill all required fields");
-
         return;
     }
 
     if(!nameRegex.test(name1)){
-
         alert("Invalid name");
-
         return;
     }
 
     if(!phoneRegex.test(phone)){
-
         alert("Invalid phone number");
-
         return;
     }
 
     if(!emailRegex.test(email)){
-
         alert("Invalid email");
-
         return;
     }
 
-    if(muhurthaType == "couple"){
-
+    if(muhurthaType === "couple"){
         if(!name2 || !nak2){
-
             alert("Please fill second person details");
-
             return;
         }
     }
 
-    // fetch(
-    // "https://script.google.com/macros/s/AKfycbzHLwOjhVzobZFSdCQgqwA4wUhtmQx7A1IazE68X_Ha7PLptniscj0P0vFXSg10CR4/exec",
+    // 🔥 IMPORTANT: ALWAYS SET TYPE FIRST (FIX FOR YOUR BUG)
+    localStorage.clear();
 
-    // {
+    localStorage.setItem("temp_type", "muhurtham");
 
-    //     method:"POST",
+    localStorage.setItem("temp_muhurtham_type", muhurthaService);
+    localStorage.setItem("temp_price", muhurthaPrice);
 
-    //     body:JSON.stringify({
+    localStorage.setItem("temp_name1", name1);
+    localStorage.setItem("temp_nak1", nak1);
 
-    //         type:"muhurtha",
+    localStorage.setItem("temp_name2", name2);
+    localStorage.setItem("temp_nak2", nak2);
 
-    //         service:muhurthaService,
+    localStorage.setItem("temp_event", eventName);
+    localStorage.setItem("temp_requirement", requirement);
 
-    //         price:muhurthaPrice,
+    localStorage.setItem("temp_phone", phone);
+    localStorage.setItem("temp_email", email);
 
-    //         name1:name1,
-
-    //         nak1:nak1,
-
-    //         name2:name2,
-
-    //         nak2:nak2,
-
-    //         event:eventName,
-
-    //         requirement:requirement,
-
-    //         phone:phone,
-
-    //         email:email
-
-    //     })
-
-    // })
-
-    // .then(res => res.json())
-
-    // .then(response => {
-
-    //     localStorage.setItem(
-    //         "bookingId",
-    //         response.bookingId
-    //     );
-
-    //     window.location.href =
-    //     "payment.html";
-
-    // })
-
-    // .catch(err => {
-
-    //     console.error(err);
-
-    //     alert("Error submitting booking");
-
-    // });
-
-    // SAVE TEMP DATA
-
-localStorage.setItem("temp_type", "muhurtha");
-
-localStorage.setItem(
-    "temp_muhurtham_type",
-    muhurthaService
-);
-
-localStorage.setItem(
-    "temp_price",
-    muhurthaPrice
-);
-    
-localStorage.setItem("temp_name1", name1);
-localStorage.setItem("temp_nak1", nak1);
-
-localStorage.setItem("temp_name2", name2);
-localStorage.setItem("temp_nak2", nak2);
-
-localStorage.setItem("temp_event", eventName);
-localStorage.setItem("temp_requirement", requirement);
-
-localStorage.setItem("temp_phone", phone);
-localStorage.setItem("temp_email", email);
-
-// REDIRECT
-
-window.location.href = "payment.html";
-
+    window.location.href = "payment.html";
 }
 
 </script>
