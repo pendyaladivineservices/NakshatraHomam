@@ -364,13 +364,17 @@ function paymentDone(){
 
     })
 
-    .catch(err => {
+   .catch(err => {
 
-        console.error(err);
+    console.error(err);
 
-        alert("Error saving booking");
+    alert("Error saving booking");
 
-    });
+    btn.disabled = false;
+
+    btn.innerText = "I Have Paid";
+
+});
 
 }
 
