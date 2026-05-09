@@ -40,7 +40,7 @@ img{
 button{
     width:100%;
     padding:14px;
-    background:#ff6600;
+    background:#ff6600;a
     color:white;
     border:none;
     border-radius:8px;
@@ -53,6 +53,31 @@ button:hover{
     background:#e65c00;
 }
 
+.upload-box{
+    margin-top:20px;
+    text-align:center;
+}
+
+.upload-box p{
+    font-weight:bold;
+    margin-bottom:10px;
+    color:#333;
+}
+
+/* FILE INPUT STYLING */
+#paymentSlip{
+    width:100%;
+    max-width:300px;
+    padding:12px;
+    border:2px dashed #ff6600;
+    border-radius:10px;
+    background:#fff;
+    cursor:pointer;
+    text-align:center;
+    display:block;
+    margin:auto;
+}
+    
 </style>
 </head>
 
@@ -66,15 +91,14 @@ button:hover{
 
 <img src="upi-qr-1.jpeg">
 
-<p style="margin-top:15px;">
-Upload Payment Screenshot
-</p>
+<div class="upload-box">
+    <p>Upload Payment Screenshot</p>
 
-<input
-type="file"
-id="paymentSlip"
-accept="image/*"
-style="margin-top:10px;">
+    <input
+        type="file"
+        id="paymentSlip"
+        accept="image/*">
+</div>
     
 <div class="amount">
 ₹ <span id="amount"></span>
