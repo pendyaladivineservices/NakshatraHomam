@@ -306,7 +306,10 @@ Book
 <img src="Images/muhurtha/muhurtha.png">
 
 <button class="btn"
-onclick="openMuhurthaPopup('couple','Marriage Muhurthas','1501')">
+data-type="couple"
+data-service="Marriage Muhurthas"
+data-price="1116"
+onclick="openMuhurthaPopupFromBtn(this)"
 Book
 </button>
 
@@ -452,7 +455,17 @@ function scrollSlider(btn, dir){
 let muhurthaType = "";
 let muhurthaService = "";
 let muhurthaPrice = "";
+    
+function openMuhurthaPopupFromBtn(btn){
 
+    let type = btn.dataset.type;
+    let service = btn.dataset.service;
+    let price = btn.dataset.price;
+
+    openMuhurthaPopup(type, service, price);
+}
+
+    
 function openMuhurthaPopup(type, service, price){
 
     muhurthaType = type;
