@@ -455,7 +455,6 @@ let muhurthaType = "";
 let muhurthaService = "";
 let muhurthaPrice = "";
 
-// OPEN FROM BUTTON (SAFE + CLEAN)
 function openMuhurthaPopupFromBtn(btn){
 
     muhurthaType = btn.dataset.type;
@@ -465,17 +464,12 @@ function openMuhurthaPopupFromBtn(btn){
     openMuhurthaPopup();
 }
 
-// MAIN POPUP
 function openMuhurthaPopup(){
 
     document.getElementById("muhurthaPopup").style.display = "flex";
 
     document.getElementById("muhurthaSecondPerson").style.display =
         (muhurthaType === "couple") ? "block" : "none";
-}
-
-function closeMuhurthaPopup(){
-    document.getElementById("muhurthaPopup").style.display = "none";
 }
 
 function submitMuhurtha(){
@@ -489,54 +483,33 @@ function submitMuhurtha(){
     let phone = document.getElementById("m_phone").value.trim();
     let email = document.getElementById("m_email").value.trim();
 
-    const nameRegex = /^[A-Za-z\s]+$/;
-    const phoneRegex = /^[0-9+\-\s()]{7,20}$/;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
     if(!name1 || !nak1 || !eventName || !phone || !email){
         alert("Please fill all required fields");
         return;
     }
 
-    if(!nameRegex.test(name1)){
-        alert("Invalid name");
+    if(muhurthaType === "couple" && (!name2 || !nak2)){
+        alert("Please fill second person details");
         return;
     }
 
-    if(!phoneRegex.test(phone)){
-        alert("Invalid phone number");
-        return;
-    }
-
-    if(!emailRegex.test(email)){
-        alert("Invalid email");
-        return;
-    }
-
-    if(muhurthaType === "couple"){
-        if(!name2 || !nak2){
-            alert("Please fill second person details");
-            return;
-        }
-    }
-
-    // 🔥 IMPORTANT: ALWAYS SET TYPE FIRST (FIX FOR YOUR BUG)
+    // 🔥 CRITICAL FIX: ALWAYS RESET BEFORE SETTING
     localStorage.clear();
 
     localStorage.setItem("temp_type", "muhurtham");
 
     localStorage.setItem("temp_muhurtham_type", muhurthaService);
-    localStorage.setItem("temp_price", muhurthaPrice);
+
+    // 🔥 ALWAYS FORCE STRING PRICE (prevents old value issue)
+    localStorage.setItem("temp_price", String(muhurthaPrice));
 
     localStorage.setItem("temp_name1", name1);
     localStorage.setItem("temp_nak1", nak1);
-
     localStorage.setItem("temp_name2", name2);
     localStorage.setItem("temp_nak2", nak2);
 
     localStorage.setItem("temp_event", eventName);
     localStorage.setItem("temp_requirement", requirement);
-
     localStorage.setItem("temp_phone", phone);
     localStorage.setItem("temp_email", email);
 
