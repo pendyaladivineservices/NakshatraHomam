@@ -373,9 +373,24 @@ function paymentDone(){
 
     })
 
-    .then(res => res.json())
-
-    .then(response => {
+    .then(res => res.text())
+    
+    .then(text => {
+    
+        console.log("RAW RESPONSE:", text);
+    
+        let response = JSON.parse(text);
+    
+        alert(
+        "Booking Successful!\nBooking ID: "
+        + response.bookingId
+        );
+    
+        localStorage.clear();
+    
+        window.location.href = "index.html";
+    
+    })
 
         alert(
         "Booking Successful!\nBooking ID: "
@@ -392,7 +407,7 @@ function paymentDone(){
 
     console.error(err);
 
-    alert("Error saving booking");
+    alert("Error saving booking. Please try again.");
 
     btn.disabled = false;
 
