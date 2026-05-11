@@ -645,22 +645,30 @@ window.location.href = "payment.html";
 
 <script>
 
-// 🔒 SET THIS TO FALSE TO CLOSE BOOKINGS
+// 🔒 CONTROL SWITCH
 let BOOKING_ENABLED = false;
 
+// 🔔 POPUP MESSAGE FUNCTION
+function showBookingClosedMessage(){
+    alert("🙏 Booking is currently closed. Please try again later.");
+}
+
+// 🔒 DISABLE ALL BOOK BUTTONS
 function disableBookingButtons(){
 
     const buttons = document.querySelectorAll(".service-card .btn");
 
     buttons.forEach(btn => {
 
-        btn.disabled = true;
         btn.innerText = "Booking Closed";
         btn.style.background = "#999";
         btn.style.cursor = "not-allowed";
 
-        // remove click action completely
-        btn.onclick = null;
+        // override click
+        btn.onclick = function(e){
+            e.preventDefault();
+            showBookingClosedMessage();
+        };
     });
 }
 
