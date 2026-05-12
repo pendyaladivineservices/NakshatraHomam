@@ -107,46 +107,111 @@ Loading Panchangam...
 
 <script>
 
-async function loadPanchangam(){
+// DATE
 
-    try{
+const now = new Date();
 
-        // SAMPLE FREE API
-        // Replace with your actual API later
+document.getElementById("todayDate").innerText =
+now.toDateString();
 
-        const response = await fetch(
-            'https://api.allorigins.win/raw?url=https://jsonplaceholder.typicode.com/todos/1'
-        );
+// DATA
 
-        const data = await response.json();
+const panchangam = {
 
-        // DEMO DATA
-        // Replace with real API fields later
+    year: "Krodhi",
+    ayanam: "Uttarayanam",
+    ritu: "Vasantha",
+    month: "Vaishakha",
+    paksham: "Shukla Paksham",
+    vaaram: "Wednesday",
 
-        document.getElementById("year").innerText = "Krodhi";
-        document.getElementById("ayanam").innerText = "Uttarayanam";
-        document.getElementById("ritu").innerText = "Vasantha";
-        document.getElementById("month").innerText = "Chaitra";
+    tithi: "Ekadashi",
+    nakshatra: "Rohini",
+    yogam: "Siddha",
+    karanam: "Bava",
 
-        document.getElementById("tithi").innerText = "Ekadashi";
-        document.getElementById("nakshatra").innerText = "Rohini";
-        document.getElementById("yogam").innerText = "Siddha";
-        document.getElementById("karanam").innerText = "Bava";
+    rahukalam: "12:00 PM - 01:30 PM",
+    yamagandam: "07:30 AM - 09:00 AM",
+    gulika: "10:30 AM - 12:00 PM",
+    varjyam: "02:15 PM - 03:00 PM",
+    amrita: "06:00 PM - 07:00 PM",
+    durmuhurtham: "11:50 AM - 12:40 PM",
 
-        document.getElementById("rahukalam").innerText = "10:30 AM - 12:00 PM";
-        document.getElementById("yamagandam").innerText = "3:00 PM - 4:30 PM";
-        document.getElementById("varjyam").innerText = "1:20 PM - 2:05 PM";
-        document.getElementById("amrita").innerText = "7:15 PM - 8:00 PM";
+    sunrise: "05:48 AM",
+    sunset: "06:32 PM",
+    moonrise: "03:15 PM",
+    moonset: "02:45 AM"
+};
 
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("content").style.display = "block";
+// SET VALUES
 
-    }catch(err){
-        document.getElementById("loading").innerText = "Failed to load Panchangam";
-    }
-}
+document.getElementById("year").innerText =
+panchangam.year;
 
-loadPanchangam();
+document.getElementById("ayanam").innerText =
+panchangam.ayanam;
+
+document.getElementById("ritu").innerText =
+panchangam.ritu;
+
+document.getElementById("month").innerText =
+panchangam.month;
+
+document.getElementById("paksham").innerText =
+panchangam.paksham;
+
+document.getElementById("vaaram").innerText =
+panchangam.vaaram;
+
+document.getElementById("tithi").innerText =
+panchangam.tithi;
+
+document.getElementById("nakshatra").innerText =
+panchangam.nakshatra;
+
+document.getElementById("yogam").innerText =
+panchangam.yogam;
+
+document.getElementById("karanam").innerText =
+panchangam.karanam;
+
+document.getElementById("rahukalam").innerText =
+panchangam.rahukalam;
+
+document.getElementById("yamagandam").innerText =
+panchangam.yamagandam;
+
+document.getElementById("gulika").innerText =
+panchangam.gulika;
+
+document.getElementById("varjyam").innerText =
+panchangam.varjyam;
+
+document.getElementById("amrita").innerText =
+panchangam.amrita;
+
+document.getElementById("durmuhurtham").innerText =
+panchangam.durmuhurtham;
+
+document.getElementById("sunrise").innerText =
+panchangam.sunrise;
+
+document.getElementById("sunset").innerText =
+panchangam.sunset;
+
+document.getElementById("moonrise").innerText =
+panchangam.moonrise;
+
+document.getElementById("moonset").innerText =
+panchangam.moonset;
+
+// SHOW PAGE
+
+document.getElementById("loading").style.display =
+"none";
+
+document.getElementById("content").style.display =
+"block";
 
 </script>
 
