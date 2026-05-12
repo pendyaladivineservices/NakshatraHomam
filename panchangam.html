@@ -281,98 +281,141 @@ style="display:none;">
 
 </div>
 
+    
 <script>
 
-// YOUR APPS SCRIPT URL
+// YOUR APPS SCRIPT WEB APP URL
 const API_URL =
 "https://script.google.com/macros/s/AKfycbzwBsayIN21y1onJCcKSVdDd1F0PNNv08-WK12QUcsOQcgh2uQQb6nhGqGNt9jlbpv8/exec";
 
 // DATE
-
 const now = new Date();
 
 document.getElementById("todayDate")
 .innerText =
 now.toDateString();
 
-// LOAD DATA
-
 async function loadPanchangam(){
 
     try{
 
-        const res =
+        const response =
         await fetch(API_URL);
 
-        const data =
-        await res.json();
+        const p =
+        await response.json();
 
-        console.log(data);
+        console.log(p);
 
-        // FILL DATA
+        if(p.error){
+            throw new Error(p.error);
+        }
+
+        // CALENDAR
 
         document.getElementById("year")
-        .innerText = data.year;
+        .innerText =
+        p.year || "-";
 
         document.getElementById("ayanam")
-        .innerText = data.ayanam;
+        .innerText =
+        p.ayanam || "-";
 
         document.getElementById("ritu")
-        .innerText = data.ritu;
+        .innerText =
+        p.ritu || "-";
 
         document.getElementById("month")
-        .innerText = data.month;
+        .innerText =
+        p.month || "-";
 
         document.getElementById("paksham")
-        .innerText = data.paksham;
+        .innerText =
+        p.paksham || "-";
 
         document.getElementById("vaaram")
-        .innerText = data.vaaram;
+        .innerText =
+        p.vaaram || "-";
+
+        // DAILY
 
         document.getElementById("tithi")
-        .innerText = data.tithi;
+        .innerText =
+        p.tithi || "-";
 
         document.getElementById("nakshatra")
-        .innerText = data.nakshatra;
+        .innerText =
+        p.nakshatra || "-";
 
         document.getElementById("yogam")
-        .innerText = data.yogam;
+        .innerText =
+        p.yogam || "-";
 
         document.getElementById("karanam")
-        .innerText = data.karanam;
+        .innerText =
+        p.karanam || "-";
+
+        // TIMINGS
 
         document.getElementById("rahukalam")
-        .innerText = data.rahukalam;
+        .innerText =
+        JSON.stringify(p.rahukalam || "-");
 
         document.getElementById("yamagandam")
-        .innerText = data.yamagandam;
+        .innerText =
+        JSON.stringify(p.yamagandam || "-");
 
         document.getElementById("gulika")
-        .innerText = data.gulika;
+        .innerText =
+        JSON.stringify(p.gulika || "-");
 
         document.getElementById("varjyam")
-        .innerText = data.varjyam;
+        .innerText =
+        JSON.stringify(p.varjyam || "-");
 
         document.getElementById("amrita")
-        .innerText = data.amrita;
+        .innerText =
+        JSON.stringify(p.amrita || "-");
 
         document.getElementById("durmuhurtham")
-        .innerText = data.durmuhurtham;
+        .innerText =
+        JSON.stringify(p.durmuhurtham || "-");
+
+        // SUN
+
+        document.getElementById("sunrise")
+        .innerText =
+        p.sunrise || "-";
+
+        document.getElementById("sunset")
+        .innerText =
+        p.sunset || "-";
+
+        document.getElementById("moonrise")
+        .innerText =
+        p.moonrise || "-";
+
+        document.getElementById("moonset")
+        .innerText =
+        p.moonset || "-";
 
         // SHOW
 
         document.getElementById("loading")
-        .style.display = "none";
+        .style.display =
+        "none";
 
         document.getElementById("content")
-        .style.display = "block";
+        .style.display =
+        "block";
 
     }catch(err){
 
         console.log(err);
 
         document.getElementById("loading")
-        .style.display = "none";
+        .style.display =
+        "none";
 
         document.getElementById("error")
         .innerText =
@@ -383,6 +426,5 @@ async function loadPanchangam(){
 loadPanchangam();
 
 </script>
-
 </body>
 </html>
