@@ -214,55 +214,41 @@ document.getElementById("todayDate").innerText = now.toDateString();
 // =====================
 async function loadPanchangam(){
 
-    try{
+  try{
 
-        const response = await fetch(API_URL);
+    const response = await fetch(API_URL);
+    const p = await response.json();
 
-        const text = await response.text();
+    console.log(p);
 
-        console.log("RAW:", text);
+    // ONLY REAL FIELDS FROM YOUR BACKEND
 
-        const p = JSON.parse(text);
+    document.getElementById("vaaram").innerText = p.vaaram || "-";
 
-        if(p.error){
-            throw new Error(p.error);
-        }
+    document.getElementById("sunrise").innerText = p.sunrise || "-";
+    document.getElementById("sunset").innerText = p.sunset || "-";
+    document.getElementById("moonrise").innerText = p.moonrise || "-";
+    document.getElementById("moonset").innerText = p.moonset || "-";
 
-        // CALENDAR
-        document.getElementById("year").innerText = p.year || "-";
-        document.getElementById("ayanam").innerText = p.ayanam || "-";
-        document.getElementById("ritu").innerText = p.ritu || "-";
-        document.getElementById("month").innerText = p.month || "-";
-        document.getElementById("paksham").innerText = p.paksham || "-";
-        document.getElementById("vaaram").innerText = p.vaaram || "-";
+    document.getElementById("rahukalam").innerText = p.rahukalam || "-";
+    document.getElementById("yamagandam").innerText = p.yamagandam || "-";
+    document.getElementById("gulika").innerText = p.gulika || "-";
 
-        // DAILY
-        document.getElementById("tithi").innerText = p.tithi || "-";
-        document.getElementById("nakshatra").innerText = p.nakshatra || "-";
-        document.getElementById("yogam").innerText = p.yogam || "-";
-        document.getElementById("karanam").innerText = p.karanam || "-";
+    document.getElementById("varjyam").innerText = p.varjyam || "-";
+    document.getElementById("amrita").innerText = p.amrita || "-";
+    document.getElementById("durmuhurtham").innerText = p.durmuhurtham || "-";
 
-        // TIMINGS
-        document.getElementById("rahukalam").innerText = JSON.stringify(p.rahukalam || "-");
-        document.getElementById("yamagandam").innerText = JSON.stringify(p.yamagandam || "-");
-        document.getElementById("gulika").innerText = JSON.stringify(p.gulika || "-");
-        document.getElementById("varjyam").innerText = JSON.stringify(p.varjyam || "-");
-        document.getElementById("amrita").innerText = JSON.stringify(p.amrita || "-");
-        document.getElementById("durmuhurtham").innerText = JSON.stringify(p.durmuhurtham || "-");
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("content").style.display = "block";
 
-        // SHOW UI
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("content").style.display = "block";
+  }catch(err){
 
-    }catch(err){
+    console.log(err);
 
-        console.log("ERROR:", err);
-
-        document.getElementById("loading").style.display = "none";
-        document.getElementById("error").innerText = "Failed to load Panchangam";
-    }
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("error").innerText = "Failed to load Panchangam";
+  }
 }
-
 loadPanchangam();
 
 </script>
