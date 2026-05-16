@@ -5,12 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PENDYALA DIVINE SERVICES</title>
 
-<meta property="og:title" content="PENDYALA DIVINE SERVICES">
-<meta property="og:description" content="Book Poojas, Astrology, Muhurthas & Divine Services Online.">
-<meta property="og:image" content="https://pendyaladivineservices.com/banner.png">
-<meta property="og:url" content="https://pendyaladivineservices.com">
-<meta property="og:type" content="website">
-
 <style>
 
 html{scroll-behavior:smooth;}
@@ -31,25 +25,23 @@ header{
 
 .header-content{
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     gap:15px;
-    flex-wrap:wrap;
 }
 
 .logo{
-    width:110px;
-    height:110px;
+    width:100px;
+    height:100px;
     border-radius:50%;
     background:white;
-    padding:6px;
+    padding:5px;
 }
 
 /* MENU */
 .menu{
     background:white;
     padding:10px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
@@ -62,96 +54,68 @@ header{
     font-weight:bold;
 }
 
-/* CONTAINER */
-.container{padding:20px;}
-
-#searchBox{
-    padding:10px;
-    width:90%;
-    max-width:400px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    margin-bottom:20px;
-}
-
-/* SECTION TITLE */
-.section-title{
-    color:#8B0000;
-    font-size:24px;
-}
-
-/* ✅ FIX: 5 PRODUCTS PER ROW (DESKTOP) */
+/* GRID FIX → 5 / 4 / 2 */
 .products{
     display:grid;
-    grid-template-columns:repeat(5, 1fr);
+    grid-template-columns:repeat(5,1fr);
     gap:10px;
     max-width:1400px;
     margin:auto;
+    padding:10px;
 }
 
-/* TABLET */
 @media(max-width:1100px){
-    .products{
-        grid-template-columns:repeat(4, 1fr);
-    }
+    .products{grid-template-columns:repeat(4,1fr);}
 }
 
-/* MOBILE */
-@media(max-width:700px){
-    .products{
-        grid-template-columns:repeat(2, 1fr);
-    }
+@media(max-width:800px){
+    .products{grid-template-columns:repeat(3,1fr);}
 }
 
-/* CARD SMALLER FOR MORE PRODUCTS */
+@media(max-width:600px){
+    .products{grid-template-columns:repeat(2,1fr);}
+}
+
+/* CARD */
 .card{
     background:white;
     border-radius:10px;
     padding:8px;
-    box-shadow:0 0 8px rgba(0,0,0,0.08);
-}
-
-/* IMAGE */
-.main-image{
-    width:100%;
-    aspect-ratio:1/1;
-    overflow:hidden;
-    border-radius:8px;
+    box-shadow:0 0 8px rgba(0,0,0,0.1);
 }
 
 .main-image img{
     width:100%;
-    height:100%;
+    height:120px;
     object-fit:cover;
+    border-radius:8px;
 }
 
-/* TEXT SMALLER */
-.card h3{
+h3{
     font-size:13px;
-    margin:8px 0;
+    margin:6px 0;
 }
 
 .desc{
     font-size:11px;
     color:#444;
-    min-height:30px;
 }
 
 .price{
-    color:#cc0000;
-    font-size:16px;
     font-weight:bold;
+    color:#c00;
+    font-size:15px;
 }
 
-/* BUTTONS CENTER */
+/* BUTTON FIX */
 .btn{
+    width:100%;
+    margin-top:5px;
+    padding:6px;
+    border:none;
+    border-radius:6px;
     background:#ff6600;
     color:white;
-    border:none;
-    padding:6px;
-    width:100%;
-    margin-top:6px;
-    border-radius:6px;
     cursor:pointer;
     font-size:12px;
 }
@@ -161,15 +125,15 @@ header{
     display:flex;
     justify-content:center;
     gap:8px;
-    margin-top:8px;
+    margin-top:5px;
 }
 
 .qty-box button{
-    width:26px;
-    height:26px;
-    border:none;
+    width:24px;
+    height:24px;
     background:#ff6600;
     color:white;
+    border:none;
     border-radius:4px;
 }
 
@@ -184,28 +148,58 @@ header{
     background:rgba(0,0,0,0.6);
     justify-content:center;
     align-items:center;
+    padding:10px;
 }
 
 .popup-box{
     background:white;
-    width:90%;
+    width:100%;
     max-width:420px;
     padding:15px;
     border-radius:10px;
+    text-align:left;
+    max-height:90vh;
+    overflow:auto;
 }
 
 .popup-box img{
     width:100%;
-    max-height:280px;
+    max-height:260px;
     object-fit:contain;
-    border-radius:8px;
 }
 
-/* TOTAL */
-.total{
-    font-size:18px;
+/* TOP SUMMARY */
+.summary{
+    background:#fff3e0;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:10px;
     font-weight:bold;
-    margin:10px 0;
+}
+
+/* FORM FIX */
+input,textarea{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
+}
+
+/* BUTTONS */
+.popup-btn{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    border:none;
+    border-radius:6px;
+    background:#ff6600;
+    color:white;
+}
+
+.close{
+    background:#777;
 }
 
 </style>
@@ -216,152 +210,160 @@ header{
 <header>
 <div class="header-content">
 <img src="icon.jpeg" class="logo">
-<div>
 <h2>PENDYALA DIVINE SERVICES</h2>
-</div>
 </div>
 </header>
 
 <div class="menu">
 <a href="#">Poojas</a>
 <a href="#">Astrology</a>
-<a href="#">Muhurthas</a>
 <a href="#">Products</a>
 </div>
 
-<div class="container">
-
-<input type="text" id="searchBox" placeholder="Search products...">
-
-<h2 class="section-title">Spiritual Products</h2>
+<h2>Spiritual Products</h2>
 
 <div class="products">
 
-<!-- PRODUCT 1 -->
+<!-- 1 -->
 <div class="card">
-<div class="main-image"><img src="Images/SpatikaShivaLingam_One Inch.jpeg"></div>
+<img class="main-image" src="Images/SpatikaShivaLingam_One Inch.jpeg">
 <h3>Spatika Shivlingam</h3>
-<p class="desc">Peace & spiritual growth</p>
+<p class="desc">Peace & growth</p>
 <div class="price">₹1149</div>
-<div class="qty-box">
-<button onclick="changeQty(this,-1)">-</button><span class="qty">1</span><button onclick="changeQty(this,1)">+</button>
-</div>
-<button class="btn" onclick="openCheckout(this)">Buy Now</button>
-</div>
-
-<!-- PRODUCT 2 -->
-<div class="card">
-<div class="main-image"><img src="Images/MarakathaShivalingam.jpeg"></div>
-<h3>Marakatha Shivlingam</h3>
-<p class="desc">Wealth & prosperity</p>
-<div class="price">₹1099</div>
-<div class="qty-box">
-<button onclick="changeQty(this,-1)">-</button><span class="qty">1</span><button onclick="changeQty(this,1)">+</button>
-</div>
-<button class="btn" onclick="openCheckout(this)">Buy Now</button>
-</div>
-
-<!-- PRODUCT 3 -->
-<div class="card">
-<div class="main-image"><img src="Images/Navagraha Mala.jpeg"></div>
-<h3>Navagraha Mala</h3>
-<p class="desc">Planetary balance</p>
-<div class="price">₹5500</div>
-<div class="qty-box">
-<button onclick="changeQty(this,-1)">-</button><span class="qty">1</span><button onclick="changeQty(this,1)">+</button>
-</div>
-<button class="btn" onclick="openCheckout(this)">Buy Now</button>
-</div>
-
-<!-- PRODUCT 4 -->
-<div class="card">
-<div class="main-image"><img src="Images/spatika_nandi1.jpeg"></div>
-<h3>Spatika Nandi</h3>
-<p class="desc">Focus & calmness</p>
-<div class="price">₹1099</div>
-<div class="qty-box">
-<button onclick="changeQty(this,-1)">-</button><span class="qty">1</span><button onclick="changeQty(this,1)">+</button>
-</div>
-<button class="btn" onclick="openCheckout(this)">Buy Now</button>
-</div>
-
-<!-- ✅ PRODUCT 5 (ADDED) -->
-<div class="card">
-<div class="main-image">
-<img src="Images/MarakathaNandi.jpeg">
-</div>
-
-<h3>Marakatha Nandi (1 inch)</h3>
-<p class="desc">Improves calmness & positivity</p>
-
-<div class="price">₹1099</div>
 
 <div class="qty-box">
-<button onclick="changeQty(this,-1)">-</button>
+<button onclick="qty(this,-1)">-</button>
 <span class="qty">1</span>
-<button onclick="changeQty(this,1)">+</button>
+<button onclick="qty(this,1)">+</button>
 </div>
 
+<button class="btn" onclick="openDetails(this)">View Details</button>
 <button class="btn" onclick="openCheckout(this)">Buy Now</button>
 </div>
 
+<!-- 2 -->
+<div class="card">
+<img class="main-image" src="Images/MarakathaShivalingam.jpeg">
+<h3>Marakatha Shivlingam</h3>
+<p class="desc">Wealth energy</p>
+<div class="price">₹1099</div>
+
+<div class="qty-box">
+<button onclick="qty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="qty(this,1)">+</button>
 </div>
+
+<button class="btn" onclick="openDetails(this)">View Details</button>
+<button class="btn" onclick="openCheckout(this)">Buy Now</button>
+</div>
+
+<!-- 3 -->
+<div class="card">
+<img class="main-image" src="Images/Navagraha Mala.jpeg">
+<h3>Navagraha Mala</h3>
+<p class="desc">Planet balance</p>
+<div class="price">₹5500</div>
+
+<div class="qty-box">
+<button onclick="qty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="qty(this,1)">+</button>
+</div>
+
+<button class="btn" onclick="openDetails(this)">View Details</button>
+<button class="btn" onclick="openCheckout(this)">Buy Now</button>
+</div>
+
+<!-- 4 -->
+<div class="card">
+<img class="main-image" src="Images/spatika_nandi1.jpeg">
+<h3>Spatika Nandi</h3>
+<p class="desc">Calm energy</p>
+<div class="price">₹1099</div>
+
+<div class="qty-box">
+<button onclick="qty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="qty(this,1)">+</button>
+</div>
+
+<button class="btn" onclick="openDetails(this)">View Details</button>
+<button class="btn" onclick="openCheckout(this)">Buy Now</button>
+</div>
+
+<!-- 5 -->
+<div class="card">
+<img class="main-image" src="Images/MarakathaNandi.jpeg">
+<h3>Marakatha Nandi</h3>
+<p class="desc">Focus & positivity</p>
+<div class="price">₹1099</div>
+
+<div class="qty-box">
+<button onclick="qty(this,-1)">-</button>
+<span class="qty">1</span>
+<button onclick="qty(this,1)">+</button>
+</div>
+
+<button class="btn" onclick="openDetails(this)">View Details</button>
+<button class="btn" onclick="openCheckout(this)">Buy Now</button>
+</div>
+
 </div>
 
 <!-- POPUP -->
-<div class="popup-bg" id="checkoutPopup">
+<div class="popup-bg" id="popup">
 <div class="popup-box">
 
-<h3>Checkout</h3>
+<img id="img">
 
-<b>Product:</b> <span id="pname"></span><br><br>
-<b>Qty:</b> <span id="pqty"></span><br><br>
-
-<div class="total">Total: ₹<span id="ptotal"></span></div>
+<div class="summary">
+Product: <span id="pname"></span><br>
+Qty: <span id="pqty"></span><br>
+Total: ₹<span id="ptotal"></span>
+</div>
 
 <input placeholder="Name">
 <input placeholder="Phone">
 <textarea placeholder="Address"></textarea>
 
-<button class="btn">Proceed</button>
-<button class="btn" onclick="closePopup()">Close</button>
+<button class="popup-btn">Proceed</button>
+<button class="popup-btn close" onclick="closePopup()">Close</button>
 
 </div>
 </div>
 
 <script>
 
-function changeQty(btn,change){
-    let q = btn.parentElement.querySelector(".qty");
-    let v = Math.max(1, parseInt(q.innerText) + change);
-    q.innerText = v;
+function qty(btn,n){
+    let s = btn.parentElement.querySelector(".qty");
+    let v = Math.max(1, parseInt(s.innerText)+n);
+    s.innerText=v;
 }
 
 function openCheckout(btn){
+    let card=btn.closest(".card");
+    let name=card.querySelector("h3").innerText;
+    let qty=parseInt(card.querySelector(".qty").innerText);
+    let price=parseInt(card.querySelector(".price").innerText.replace("₹",""));
 
-    let card = btn.closest(".card");
+    document.getElementById("pname").innerText=name;
+    document.getElementById("pqty").innerText=qty;
+    document.getElementById("ptotal").innerText=qty*price;
 
-    let name = card.querySelector("h3").innerText;
-    let qty = parseInt(card.querySelector(".qty").innerText);
-    let price = parseInt(card.querySelector(".price").innerText.replace("₹",""));
-
-    document.getElementById("pname").innerText = name;
-    document.getElementById("pqty").innerText = qty;
-    document.getElementById("ptotal").innerText = qty * price;
-
-    document.getElementById("checkoutPopup").style.display="flex";
+    document.getElementById("popup").style.display="flex";
 }
 
 function closePopup(){
-    document.getElementById("checkoutPopup").style.display="none";
+    document.getElementById("popup").style.display="none";
 }
 
-document.getElementById("searchBox").addEventListener("keyup",function(){
-    let f=this.value.toLowerCase();
-    document.querySelectorAll(".card").forEach(c=>{
-        c.style.display=c.innerText.toLowerCase().includes(f)?"block":"none";
-    });
-});
+function openDetails(btn){
+    let card=btn.closest(".card");
+    let img=card.querySelector("img").src;
+    document.getElementById("img").src=img;
+    document.getElementById("popup").style.display="flex";
+}
 
 </script>
 
