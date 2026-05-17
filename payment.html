@@ -385,13 +385,64 @@ function paymentDone(){
             return;
         }
 
-        alert(
-            "Jai Shree Ram 🙏\n\n" +
-            "Booking Successful\n" +
-            "ID: " + id + "\n\n" +
-            "Thank you for choosing Pendyala Divine Services.\n\n" +
-            "Har Har Mahadev 🔱"
-        );
+        let message = "";
+
+if(type === "pooja"){
+    message =
+    "🪔 Jai Shree Ram 🙏\n\n" +
+    "Pooja Booking Confirmed\n" +
+    "Booking ID: " + id + "\n\n" +
+    "We will perform your pooja with full devotion.\n" +
+    "You will receive further updates soon.\n\n" +
+    "Har Har Mahadev 🔱";
+}
+
+else if(type === "astrology"){
+    message =
+    "🔯 Jai Shree Ram 🙏\n\n" +
+    "Astrology Consultation Booked\n" +
+    "Booking ID: " + id + "\n\n" +
+    "Our astrologer will contact you soon with guidance.\n\n" +
+    "Har Har Mahadev 🔱";
+}
+
+else if(type === "muhurtham"){
+    message =
+    "📅 Jai Shree Ram 🙏\n\n" +
+    "Muhurtham Booking Confirmed\n" +
+    "Booking ID: " + id + "\n\n" +
+    "We will help you select the most auspicious timing.\n\n" +
+    "Har Har Mahadev 🔱";
+}
+
+else if(type === "product"){
+    message =
+    "🛍️ Jai Shree Ram 🙏\n\n" +
+    "Product Order Placed Successfully\n" +
+    "Order ID: " + id + "\n\n" +
+    "Your spiritual product will be packed and shipped soon.\n\n" +
+    "Har Har Mahadev 🔱";
+}
+
+else if(type === "learning"){
+    message =
+    "📚 Jai Shree Ram 🙏\n\n" +
+    "Learning Program Enrolled Successfully\n" +
+    "Registration ID: " + id + "\n\n" +
+    "Welcome to your spiritual learning journey.\n" +
+    "We will contact you with class details soon.\n\n" +
+    "Har Har Mahadev 🔱";
+}
+
+else{
+    message =
+    "🙏 Jai Shree Ram\n\n" +
+    "Booking Successful\n" +
+    "ID: " + id + "\n\n" +
+    "Thank you for choosing Pendyala Divine Services.";
+}
+
+alert(message);
 
         localStorage.clear();
 
