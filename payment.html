@@ -287,34 +287,40 @@ function paymentDone(){
 
     // ================= PRODUCT =================
 
-    else if(type === "product"){
+else if(type === "product"){
 
-        payload = {
+    payload = {
 
-            type:"product",
+        type:"product",
 
-            product:
-            localStorage.getItem("temp_product"),
+        product:
+        localStorage.getItem("temp_product"),
 
-            price:
-            localStorage.getItem("temp_price"),
+        price:
+        localStorage.getItem("temp_price"),
 
-            qty:
-            localStorage.getItem("temp_qty"),
+        qty:
+        localStorage.getItem("temp_qty"),
 
-            name:
-            localStorage.getItem("temp_name"),
+        name:
+        localStorage.getItem("temp_name"),
 
-            phone:
-            localStorage.getItem("temp_phone"),
+        phone:
+        localStorage.getItem("temp_phone"),
 
-            email:
-            localStorage.getItem("temp_email"),
+        email:
+        localStorage.getItem("temp_email"),
 
-            address:
-            localStorage.getItem("temp_address")
-        };
-    }
+        address:
+        localStorage.getItem("temp_address"),
+
+        state:
+        localStorage.getItem("temp_state"),
+        
+        pincode:
+        localStorage.getItem("temp_pincode")
+    };
+}
 
     // ================= LEARNING =================
 
